@@ -52,6 +52,9 @@ public class MainActivity extends FragmentActivity {
         mViewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),fragments);
         mViewPager.setAdapter(mViewPagerAdapter);
 
+        //设置预加载页面数量
+//        mViewPager.setOffscreenPageLimit(2);
+
         //关联ViewPager
         mTabLayout.setupWithViewPager(mViewPager);
         //设置滑动的
