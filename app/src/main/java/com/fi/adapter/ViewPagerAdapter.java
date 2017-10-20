@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.fi.fragment.MyFragment;
+import com.fi.base.BaseFragment;
 
 import java.util.ArrayList;
 
@@ -20,9 +20,9 @@ import java.util.ArrayList;
  */
 //ViewPager的适配器
 public class ViewPagerAdapter extends FragmentPagerAdapter {
-    private final ArrayList<MyFragment> fragments;
+    private final ArrayList<BaseFragment> fragments;
 
-    public ViewPagerAdapter(FragmentManager fragmentManager, ArrayList<MyFragment> fragments) {
+    public ViewPagerAdapter(FragmentManager fragmentManager, ArrayList<BaseFragment> fragments) {
         super(fragmentManager);
         this.fragments = fragments;
     }
@@ -49,6 +49,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public CharSequence getPageTitle(int position) {
-        return fragments.get(position).getTitle();
+        return fragments.get(position).getArguments().getString("title");
     }
 }

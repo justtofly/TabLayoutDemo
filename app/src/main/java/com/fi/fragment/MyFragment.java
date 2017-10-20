@@ -21,6 +21,7 @@ import android.widget.TextView;
  * 更新时间   $$Date$$
  * 更新描述   ${TODO}
  */
+//每个ViewPager页面就是一个Fragment
 public class MyFragment extends Fragment {
     private       Context mContext;
     /**
