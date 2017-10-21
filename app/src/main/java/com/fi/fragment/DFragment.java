@@ -34,7 +34,15 @@ public class DFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("TAG","DFragment:onResume被回调");
+        Log.e("TAG", "DFragment:onResume被回调");
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        Log.e("TAG1","DFragment:setUserVisibleHint="+isVisibleToUser);
     }
 
     @Override

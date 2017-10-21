@@ -22,6 +22,25 @@ public class AFragment extends BaseFragment {
     private static String TITLE = "title";
     private TextView mTextView;
 
+    /**
+     * 判断是否是初始化fragment
+     */
+    private boolean hasStarted = false;
+
+    /**
+     * 开始时间
+     */
+    long startTime;
+    /**
+     * 结束时间
+     */
+    long endTime;
+
+    /**
+     * 时间差
+     */
+    long usedTime;
+
     //创建Fragment实例
     public static AFragment newInstance(String title) {
         AFragment aFragment = new AFragment();
@@ -34,13 +53,34 @@ public class AFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("TAG","AFragment:onResume被回调");
+        Log.e("TAG", "AFragment:onResume被回调");
     }
 
     @Override
     public void onPause() {
         super.onPause();
         Log.e("TAG", "AFragment:onPause被回调");
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        Log.e("TAG1", "AFragment:setUserVisibleHint=" + isVisibleToUser);
+        if (isVisibleToUser) {
+            startTime = System.currentTimeMillis();
+            Log.e("TAG2", "startTime=" + startTime);
+            hasStarted = true;
+            Log.e("TAG2", "AFragment:开始界面");
+        } else {
+            if (hasStarted) {
+                endTime = System.currentTimeMillis();
+                Log.e("TAG2", "endTime=" + endTime);
+                usedTime = (endTime - startTime)/1000;
+                hasStarted = false;
+                Log.e("TAG2", "AFragment:结束界面,用户停留的时长统计为：" + usedTime+"秒!");
+            }
+        }
     }
 
     @Override
@@ -53,7 +93,7 @@ public class AFragment extends BaseFragment {
     @Override
     public void initData() {
         super.initData();
-        Log.e("TAG","AFragment 数据加载");
+        Log.e("TAG", "AFragment 数据加载");
 
         mTextView.setText("ContentA");
     }
@@ -62,6 +102,6 @@ public class AFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
 
-        Log.e("TAG","AFragment被销毁了");
+        Log.e("TAG", "AFragment被销毁了");
     }
 }
