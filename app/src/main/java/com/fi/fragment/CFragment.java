@@ -32,6 +32,18 @@ public class CFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("TAG","CFragment:onResume被回调");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e("TAG", "CFragment:onPause被回调");
+    }
+
+    @Override
     public View initView() {
         Log.e("TAG", "CFragment UI被初始化");
         mTextView = new TextView(mContext);

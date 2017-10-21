@@ -32,6 +32,18 @@ public class EFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("TAG","EFragment:onResume被回调");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e("TAG", "EFragment:onPause被回调");
+    }
+
+    @Override
     public View initView() {
         Log.e("TAG", "EFragment UI被初始化");
         mTextView = new TextView(mContext);
